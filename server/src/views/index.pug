@@ -1,0 +1,25 @@
+doctype html
+html(lang="en" class="text-gray-800 tracking-tight")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="description", content="Todas las noticias web de los periodicos y medios de comunicación más importantes nacionales de España actualizados en tiempo real.")
+		link(rel="stylesheet", href="/static/styles.css")
+		link(rel="shortcut icon", href="/static/favicon.ico", type="image/x-icon")
+		title Noticiasweb.info
+	body(class="p-5 mx-auto max-w-4xl")
+		header: h1(class="text-4xl text-black mb-3 inline-block underline") Noticiasweb.info
+		main(class="flex flex-col gap-5 max-w-4xl justify-center mx-auto")  
+			p(class="tracking-tighter font-light") Las últimas noticias de los periódicos de tirada nacional actualizados automáticamente en tiempo real.
+			p(class="tracking-tighter font-light") Esto es un proyecto personal de #[strong: a(class="text-blue-600 hover:text-blue-800" href="https://www.ksergio.com") www.ksergio.com]
+			div(id="grid-container" class="grid md:grid-cols-2 gap-5 cursor-pointer transition-transform"): each noticia in formateados
+				a(href=noticia.link): article(class="overflow-hidden flex relative w-full h-full p-5 py-12 bg-black group text-center justify-center")
+					img(src=noticia.img, alt=noticia.titulo class="absolute top-0 left-0 h-full w-full object-cover opacity-20 group-hover:opacity-50")
+					div(class="flex flex-col gap-5 relative text-white")
+						div
+							p= noticia.periodico
+							h3(class="text-3xl font-bold")= noticia.titulo
+							p: small= noticia.fecha
+			div#spinner(class="border-8 mb-3 border-gray-900 animate-spin border-l-transparent w-12 h-12 rounded-full mx-auto")
+		script(src="/static/createArticle.js") 
+		script(src="/static/index.js") 
